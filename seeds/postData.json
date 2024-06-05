@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Blog 1",
+        "content": "Content for blog 1.This content is only for testing purposes.",
+        "user_id": "1"
+    },
+    {
+        "title": "Blog 2",
+        "content": "Content for blog 2.This content is only for testing purposes.",
+        "user_id": "2"
+    },
+    {
+        "title": "Blog 3",
+        "content": "Content for blog 3.This content is only for testing purposes.",
+        "user_id": "3"
+    }
+]
