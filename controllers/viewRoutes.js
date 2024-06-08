@@ -68,7 +68,7 @@ router.get('/signup', (req, res) => {
     res.render('signup')
 })
 
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
             where: {
@@ -78,7 +78,7 @@ router.get('/profile', withAuth, async (req, res) => {
         // serialize data
         const posts = postData.map((post) => post.get({ plain: true }))
 
-        res.render('profile', {
+        res.render('dashboard', {
             posts,
             logged_in: req.session.logged_in
         })
