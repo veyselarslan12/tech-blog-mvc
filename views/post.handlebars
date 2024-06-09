@@ -1,0 +1,28 @@
+<article>
+  <h2>{{title}}</h2>
+  <p>Posted by {{user.name}} on {{format_date date_created}}</p>
+  <div>{{content}}</div>
+</article>
+<section>
+  <h3>Comments</h3>
+  {{#each comments}}
+    <div>
+      <p>{{comment_text}}</p>
+      <p>By {{user.name}} on {{format_date date_created}}</p>
+    </div>
+  {{/each}}
+  {{#if logged_in}}
+    <form id="newCommentForm" class="mt-4">
+      <div class="form-group">
+        <textarea
+          id="commentText"
+          class="form-control"
+          placeholder="Add a comment..."
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  {{else}}
+    <p><a href="/login">Log in</a> to add a comment.</p>
+  {{/if}}
+</section>
