@@ -6,15 +6,15 @@
     <div class="card-body">
       <blockquote class="blockquote mb-0">
         <p>{{content}}</p>
-        <footer class="blockquote-footer">Posted by {{user.name}} on {{format_date date_created}}</footer>
+        <footer class="blockquote-footer">Posted by {{user.name}} on {{format_date createdAt}}</footer>
       </blockquote>
     </div>
   </div>
 {{/each}}
 
-{{#each posts}}
+{{!-- {{#each posts}}
   <article class="mb-4">
     <h2><a href="/post/{{id}}">{{title}}</a></h2>
     <p>Created on {{format_date date_created}} by {{user.name}}</p>
   </article>
-{{/each}}
+{{/each}} --}}

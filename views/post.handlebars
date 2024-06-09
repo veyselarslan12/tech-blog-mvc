@@ -1,6 +1,6 @@
 <article>
   <h2>{{title}}</h2>
-  <p>Posted by {{user.name}} on {{format_date date_created}}</p>
+  <p>Posted by {{user.name}} on {{format_date createdAt}}</p>
   <div>{{content}}</div>
 </article>
 <section>
@@ -8,7 +8,7 @@
   {{#each comments}}
     <div>
       <p>{{comment_text}}</p>
-      <p>By {{user.name}} on {{format_date date_created}}</p>
+      <p>By {{user.name}} on {{format_date createdAt}}</p>
     </div>
   {{/each}}
   {{#if logged_in}}
@@ -22,6 +22,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+    <script src="/js/comment.js"></script>
   {{else}}
     <p><a href="/login">Log in</a> to add a comment.</p>
   {{/if}}
