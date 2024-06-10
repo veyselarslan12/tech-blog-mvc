@@ -4,8 +4,8 @@ const signupForm = document.getElementById('signupForm');
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const username = e.target.elements.username.value;
-    const password = e.target.elements.password.value;
+    const username = loginForm.querySelector('#username').value
+    const password = loginForm.querySelector('#password').value
 
     if (username && password) {
         try {
@@ -31,8 +31,8 @@ loginForm.addEventListener('submit', async (e) => {
 signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const username = e.target.elements.username.value;
-    const password = e.target.elements.password.value;
+    const username = signupForm.querySelector('#username').value
+    const password = signupForm.querySelector('#password').value
 
     if (username && password) {
         try {

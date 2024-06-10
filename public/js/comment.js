@@ -1,9 +1,10 @@
 const newCommentForm = document.getElementById('newCommentForm')
-const comment_text = document.getElementById('commentText').value
-const post_id = window.location.pathname.split('/').pop()
 
 newCommentForm.addEventListener('submit', async (e) => {
     e.preventDefault()
+
+    const comment_text = document.getElementById('commentText').value
+    const post_id = window.location.pathname.split('/').pop()
 
     if (comment_text) {
         const reponse = await fetch('/api/comments', {

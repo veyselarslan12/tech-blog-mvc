@@ -6,11 +6,12 @@ router.post('/signup', async (req, res) => {
         const newUser = await User.create(req.body);
 
         req.session.save(() => {
-            req.session.user_id = newUser.isSoftDeleted;
+            req.session.user_id = newUser.id;
             req.session.logged_in = true;
             res.status(200).json(newUser);
         });
     } catch (err) {
+        console.log(err)
         res.status(500).json(err)
     }
 })
@@ -34,7 +35,8 @@ router.post('/login', async (req, res) => {
             req.session.logged_in = true;
             res.json({ user, message: 'You are logged in!' })
         })
-    } catch (er) {
+    } catch (err) {
+        console.log(err)
         res.status(500).json(err)
     }
 })
@@ -42,10 +44,10 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
-            res.redirect('/')
+            res.status(204).end()
         })
     } else {
-        res.status(400).end()
+        res.status(400).json({ message: 'Not logged in'})
     }
 })
 

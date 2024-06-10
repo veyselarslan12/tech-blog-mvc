@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const { User, Post, Comment } = require('../models')
 const withAuth = require('../utils/authMiddleware')
-
+// Home route
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
                 }
             ]
         })
-        // serialize data
+        // Serialize data
         const posts = postData.map((post) => post.get({ plain: true }))
 
         res.render('home', {
@@ -24,6 +24,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// Single post id route
 router.get('/post/:id', async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -34,10 +35,16 @@ router.get('/post/:id', async (req, res) => {
                 },
                 {
                     model: Comment,
-                    include: [User]
+                    include: [{ model: User, attributes: ['username'] }]
                 }
             ]
         })
+
+        if (!postData) {
+            res.status(404).json({ message: 'No post found with this id' });
+            return;
+        }
+
         // serialize data
         const post = postData.get({ plain: true })
 
@@ -50,6 +57,7 @@ router.get('/post/:id', async (req, res) => {
     }
 })
 
+// Login route
 router.get('/login', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/')
@@ -59,6 +67,7 @@ router.get('/login', (req, res) => {
     res.render('login')
 })
 
+// Signup route
 router.get('/signup', (req, res) => {
     if (req.session.logged_in) {
         res.redirect('/')
@@ -68,6 +77,7 @@ router.get('/signup', (req, res) => {
     res.render('signup')
 })
 
+// Dashboard route
 router.get('/dashboard', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
