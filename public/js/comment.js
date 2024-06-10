@@ -7,7 +7,7 @@ newCommentForm.addEventListener('submit', async (e) => {
     const post_id = window.location.pathname.split('/').pop()
 
     if (comment_text) {
-        const reponse = await fetch('/api/comments', {
+        const response = await fetch('/api/comments', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json' 

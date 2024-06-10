@@ -87,7 +87,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
         })
         // serialize data
         const posts = postData.map((post) => post.get({ plain: true }))
-
+        console.log(posts)
         res.render('dashboard', {
             posts,
             logged_in: req.session.logged_in

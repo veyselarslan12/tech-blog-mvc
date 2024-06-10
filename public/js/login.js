@@ -1,7 +1,7 @@
 const loginForm = document.getElementById('loginForm');
 const signupForm = document.getElementById('signupForm');
 
-loginForm.addEventListener('submit', async (e) => {
+loginForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const username = loginForm.querySelector('#username').value
@@ -28,7 +28,7 @@ loginForm.addEventListener('submit', async (e) => {
     }
 });
 
-signupForm.addEventListener('submit', async (e) => {
+signupForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const username = signupForm.querySelector('#username').value

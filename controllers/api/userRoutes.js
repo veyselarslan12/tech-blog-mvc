@@ -20,13 +20,13 @@ router.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ where: { username: req.body.username }})
         if(!user) {
-            res.status(400).json({ message: 'Incorrect username or password entered.'})
+            res.status(400).json({ message: 'Invalid username'})
             return;
         }
 
         const validPassword = await user.checkPassword(req.body.password)
         if(!validPassword) {
-            res.status(400).json({ message: 'Incorrect username or password entered.'})
+            res.status(400).json({ message: 'Incorrect password'})
             return;
         }
 
@@ -41,10 +41,10 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     if (req.session.logged_in) {
         req.session.destroy(() => {
-            res.status(204).end()
+            res.status(204).redirect('/')
         })
     } else {
         res.status(400).json({ message: 'Not logged in'})
