@@ -12,15 +12,15 @@
     </div>
   {{/each}}
   {{#if logged_in}}
-    <form id="newCommentForm" class="mt-4">
+    <form id="newCommentForm" class="mt-4 mb-2">
       <div class="form-group">
         <textarea
           id="commentText"
-          class="form-control"
+          class="form-control mb-2"
           placeholder="Add a comment..."
         ></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary mb-2">Submit</button>
     </form>
     <script src="/js/comment.js"></script>
   {{else}}

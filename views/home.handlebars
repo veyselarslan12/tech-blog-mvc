@@ -1,7 +1,7 @@
 {{#each posts}}
-  <div class="card">
-    <div class="card-header">
-      <a href="/post/{{id}}">{{title}}</a>
+  <div class="card mt-3">
+    <div class="card-header bg-success">
+      <a class="text-warning" href="/post/{{id}}">{{title}}</a>
     </div>
     <div class="card-body">
       <blockquote class="blockquote mb-0">
@@ -11,10 +11,3 @@
     </div>
   </div>
 {{/each}}
-
-{{!-- {{#each posts}}
-  <article class="mb-4">
-    <h2><a href="/post/{{id}}">{{title}}</a></h2>
-    <p>Created on {{format_date date_created}} by {{user.name}}</p>
-  </article>
-{{/each}} --}}
