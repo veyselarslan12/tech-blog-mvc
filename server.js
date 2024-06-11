@@ -19,7 +19,7 @@ app.set('views', './views')
 
 // session
 const sess = {
-    secret: 'Super secret secret',
+    secret: process.env.SESS,
     cookie: {},
     resave: false,
     saveUninitialized: true,
