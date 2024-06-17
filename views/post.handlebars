@@ -9,6 +9,7 @@
     <div>
       <p>{{comment_text}}</p>
       <p>By {{this.user.username}} on {{format_date createdAt}}</p>
+      <button class="btn btn-danger mb-2" data-id="{{id}}">Delete The Comment</button>
     </div>
   {{/each}}
   {{#if logged_in}}
