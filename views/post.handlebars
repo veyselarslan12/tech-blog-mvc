@@ -1,6 +1,6 @@
 <article>
   <h2>{{title}}</h2>
-  <p>Posted by {{user.name}} on {{format_date createdAt}}</p>
+  <p>Posted by {{this.user.username}} on {{format_date createdAt}}</p>
   <div>{{content}}</div>
 </article>
 <section>
@@ -8,7 +8,7 @@
   {{#each comments}}
     <div>
       <p>{{comment_text}}</p>
-      <p>By {{user.name}} on {{format_date createdAt}}</p>
+      <p>By {{this.user.username}} on {{format_date createdAt}}</p>
     </div>
   {{/each}}
   {{#if logged_in}}
