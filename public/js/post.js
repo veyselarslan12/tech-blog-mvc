@@ -18,7 +18,7 @@ newPostForm.addEventListener("submit", async (e) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ title: postTitle, content: postContent })
+        body: JSON.stringify({ title: postTitle, content: postContent }),
       });
 
       if (response.ok) {
@@ -30,4 +30,33 @@ newPostForm.addEventListener("submit", async (e) => {
       alert(error.message);
     }
   }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const deleteButtons = document.querySelectorAll(".delete-post");
+
+  deleteButtons.forEach((button) => {
+    button.addEventListener("click", async (event) => {
+      const postId = event.target.getAttribute("data-id");
+
+      if (postId) {
+        try {
+          const response = await fetch(`/api/posts/${postId}`, {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          if (response.ok) {
+            document.location.reload();
+          } else {
+            alert("Failed to delete post.");
+          }
+        } catch (error) {
+          alert("Failed to delete post.");
+        }
+      }
+    });
+  });
 });
